@@ -79,7 +79,7 @@ function plugin_version_seasonality() {
       'version'        => '1.0.0',
       'license'        => 'GPLv2+',
       'author'         => "Infotel & Ludovic Dupont",
-      'homepage'       => '',
+      'homepage'       => 'https://github.com/InfotelGLPI/seasonality',
       'minGlpiVersion' => '0.90',
    );
 }
