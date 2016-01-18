@@ -134,53 +134,39 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     * @param $begin_date      datetime    Begin date of the recurrent ticket
     * @param $end_date        datetime    End date of the recurrent ticket
     * @param $periodicity     timestamp   Periodicity of creation
+    * @param $date_ticket     datetime    Date of opening the ticket 
     *
     * @return datetime next creation date
    **/
-   function computeNextCreationDate($begin_date, $end_date, $periodicity) {
+   function computeNextCreationDate($begin_date, $end_date, $periodicity, $date_ticket) {
 
       if (empty($begin_date) || ($begin_date == 'NULL')) {
          return 'NULL';
       }
-
+      
       $dates = array($begin_date, $end_date);
       
       if ($periodicity > 0) {
-         foreach ($dates as &$date) {
-            // Standard time computation
-            $timestart = strtotime($date);
-            $now       = time();
-            if ($now > $timestart) {
-//               if (preg_match('/([0-9]+)MONTH/', $periodicity, $matches)) {
-//                  $value = $matches[1];
-//                  $step  = 'MONTH';
-//                  while ($timestart < strtotime(date('Y-m', $now))) {
-//                     $timestart = strtotime("+ $value $step", $timestart);
-//                  }
-//               } else 
-               
-               $value = 1;
-               $step  = 'YEAR';
-               while (strtotime(date('Y', $timestart)) < strtotime(date('Y', $now))) {
-                  $timestart = strtotime("+ $value $step", $timestart);
-               }
-               
-//               else {
-//                  if (($value % DAY_TIMESTAMP) == 0) {
-//                     $value = $value / DAY_TIMESTAMP;
-//                     $step  = "DAY";
-//                     while ($timestart < strtotime(date('Y-m-d', $now))) {
-//                        $timestart = strtotime("+ $value $step", $timestart);
-//                     }
-//                  }
-//               }
-            }
-            
-            $date = date("Y-m-d H:i:s", $timestart);
+         $yearDiff = date('Y', strtotime($end_date)) - date('Y', strtotime($begin_date));
+         $ticketYear = date('Y', strtotime($date_ticket));
+         $begin_date = ($ticketYear - $yearDiff) . "-" . date('m-d', strtotime($begin_date));
+         $end_date = ($ticketYear) . "-" . date('m-d', strtotime($end_date));
+
+         $begin_date_begin = ($ticketYear) . "-" . date('m-d', strtotime($begin_date));
+         $end_date_begin = ($ticketYear + $yearDiff) . "-" . date('m-d', strtotime($end_date));
+
+         if (($begin_date < $date_ticket && $date_ticket < $end_date) || ($begin_date_begin < $date_ticket && $date_ticket < $end_date_begin)) {
+            return true;
+         } else {
+            return false;
+         }
+      }else{
+         if ($begin_date <= $date_ticket && $end_date >= $date_ticket) {
+            return true;
+         }else{
+            return false;
          }
       }
-
-      return $dates;
    }
    
   /** 

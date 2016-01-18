@@ -456,8 +456,7 @@ class PluginSeasonalityItem extends CommonDBTM {
       $datas = $this->getItemsForCategory($itilcategories_id);
       if (!empty($datas)) {
          foreach($datas as $data){
-            list($data['begin_date'], $data['end_date']) = $seasonality->computeNextCreationDate($data['begin_date'], $data['end_date'], $data['periodicity']);
-            if ((strtotime($data['begin_date']) <= strtotime($date) && strtotime($data['end_date']) >= strtotime($date))) {
+            if ($seasonality->computeNextCreationDate($data['begin_date'], $data['end_date'], $data['periodicity'], $date)) {
                $urgency_name       = Ticket::getUrgencyName($data["urgency"]);
                $urgency_id         = $data["urgency"];
 
