@@ -1,12 +1,12 @@
 # seasonality
-Plugin seasonality for GLPI 0.90
+Plugin seasonality for GLPI
 
-Ce plugin permet de créer des saisonnalités pour des catégories spécifiques et ainsi augmenter l'urgence et donc la priorité du ticket :
+Ce plugin permet de crÃ©er des saisonnalitÃ©s pour des catÃ©gories spÃ©cifiques et ainsi augmenter l'urgence et donc la prioritÃ© du ticket :
 
 Cas concret :
 
-Société : cabinet comptable
+SociÃ©tÃ© : cabinet comptable
 
-Catégorie de ticket : Logiciel comptable
+CatÃ©gorie de ticket : Logiciel comptable
 
-La société voudrait que pendant une période définie, lorsqu'on crée un ticket sur cette catégorie, l'urgence du ticket (et donc la priorité) augmente ou baisse à la volée. Exemple : Période liée à la déclaration des impôts.
+La sociÃ©tÃ© voudrait que pendant une pÃ©riode dÃ©finie, lorsqu'on crÃ©e un ticket sur cette catÃ©gorie, l'urgence du ticket (et donc la prioritÃ©) augmente ou baisse Ã  la volÃ©e. Exemple : PÃ©riode liÃ©e Ã  la dÃ©claration des impÃ´ts.
