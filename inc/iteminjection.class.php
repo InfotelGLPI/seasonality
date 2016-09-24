@@ -2,41 +2,35 @@
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
- Seasonality plugin for GLPI
- Copyright (C) 2003-2011 by the badges Development Team.
+ seasonality plugin for GLPI
+ Copyright (C) 2009-2016 by the seasonality Development Team.
 
- https://forge.indepnet.net/projects/badges
+ https://github.com/InfotelGLPI/seasonality
  -------------------------------------------------------------------------
 
  LICENSE
       
- This file is part of badges.
+ This file is part of seasonality.
 
- Seasonality is free software; you can redistribute it and/or modify
+ seasonality is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- Seasonality is distributed in the hope that it will be useful,
+ seasonality is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with Seasonality. If not, see <http://www.gnu.org/licenses/>.
+ along with seasonality. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
-
-// ----------------------------------------------------------------------
-// Original Author of file: Walid Nouh
-// Purpose of file:
-// ----------------------------------------------------------------------
 
 if (!defined('GLPI_ROOT')){
    die("Sorry. You can't access directly to this file");
 }
 
-/// Computer class
 class PluginSeasonalityItemInjection extends PluginSeasonalityItem
    implements PluginDatainjectionInjectionInterface {
 

@@ -1,30 +1,30 @@
 <?php
-
 /*
-  -------------------------------------------------------------------------
-  Seasonality plugin for GLPI
-  Copyright (C) 2003-2015 by the Seasonality Development Team.
+ * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
+ -------------------------------------------------------------------------
+ seasonality plugin for GLPI
+ Copyright (C) 2009-2016 by the seasonality Development Team.
 
-  https://forge.indepnet.net/projects/seasonality
-  -------------------------------------------------------------------------
+ https://github.com/InfotelGLPI/seasonality
+ -------------------------------------------------------------------------
 
-  LICENSE
+ LICENSE
+      
+ This file is part of seasonality.
 
-  This file is part of Seasonality.
+ seasonality is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
 
-  Seasonality is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
-  (at your option) any later version.
+ seasonality is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-  Seasonality is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with Seasonality. If not, see <http://www.gnu.org/licenses/>.
-  --------------------------------------------------------------------------
+ You should have received a copy of the GNU General Public License
+ along with seasonality. If not, see <http://www.gnu.org/licenses/>.
+ --------------------------------------------------------------------------
  */
 
 // Init the hooks of the plugins -Needed
@@ -76,7 +76,7 @@ function plugin_version_seasonality() {
 
    return array(
       'name'           => _n('Seasonality', 'Seasonalities', 2, 'seasonality'),
-      'version'        => '1.1.0',
+      'version'        => '1.2.0',
       'license'        => 'GPLv2+',
       'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a> & Ludovic Dupont",
       'homepage'       => 'https://github.com/InfotelGLPI/seasonality',
@@ -86,7 +86,7 @@ function plugin_version_seasonality() {
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_seasonality_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '0.90', 'lt') || version_compare(GLPI_VERSION, '0.91', 'ge')) {
+   if (version_compare(GLPI_VERSION, '0.90', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
       _e('This plugin requires GLPI >= 0.90', 'seasonality');
       return false;
    }
