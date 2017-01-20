@@ -47,4 +47,8 @@
             <tag>category</tag>
          </en>
    </tags>
+    <screenshots>
+      <screenshot>https://raw.githubusercontent.com/InfotelGLPI/seasonality/master/screenshots/seasonality.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/InfotelGLPI/seasonality/master/screenshots/seasonality_ticket.png</screenshot>
+    </screenshots>
 </root>
