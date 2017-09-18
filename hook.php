@@ -33,7 +33,7 @@ function plugin_seasonality_install() {
    include_once (GLPI_ROOT . "/plugins/seasonality/inc/profile.class.php");
 
    // Table sql creation
-   if (!TableExists("glpi_plugin_seasonality_seasonalities")) {
+   if (!$DB->tableExists("glpi_plugin_seasonality_seasonalities")) {
       $DB->runFile(GLPI_ROOT . "/plugins/seasonality/install/sql/empty.sql");
    }
 

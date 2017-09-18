@@ -76,18 +76,18 @@ function plugin_version_seasonality() {
 
    return array(
       'name'           => _n('Seasonality', 'Seasonalities', 2, 'seasonality'),
-      'version'        => '1.2.0',
+      'version'        => '1.3.0',
       'license'        => 'GPLv2+',
       'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a> & Ludovic Dupont",
       'homepage'       => 'https://github.com/InfotelGLPI/seasonality',
-      'minGlpiVersion' => '0.90',
+      'minGlpiVersion' => '9.2',
    );
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_seasonality_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '0.90', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
-      echo __('This plugin requires GLPI >= 0.90', 'seasonality');
+   if (version_compare(GLPI_VERSION, '9.2', 'lt') || version_compare(GLPI_VERSION, '9.3', 'ge')) {
+      echo __('This plugin requires GLPI >= 9.2');
       return false;
    }
    return true;
