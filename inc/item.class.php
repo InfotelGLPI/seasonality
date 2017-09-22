@@ -220,8 +220,10 @@ class PluginSeasonalityItem extends CommonDBTM {
             $massiveactionparams = array('item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand);
             Html::showMassiveActions($massiveactionparams);
          }
-
-         Html::printAjaxPager(__('Category'), $start, countElementsInTable($this->getTable(), "`".$this->getTable()."`.`plugin_seasonality_seasonalities_id` = '".$item->fields['id']."'"));
+         $dbu = new DbUtils();
+         Html::printAjaxPager(__('Category'), $start,
+                              $dbu->countElementsInTable($this->getTable(),
+                                                         "`".$this->getTable()."`.`plugin_seasonality_seasonalities_id` = '".$item->fields['id']."'"));
          echo "<table class='tab_cadre_fixehov'>";
          echo "<tr class='tab_bg_1'>";
          echo "<th width='10'>";
@@ -282,7 +284,11 @@ class PluginSeasonalityItem extends CommonDBTM {
             Html::showMassiveActions($massiveactionparams);
          }
 
-         Html::printAjaxPager(PluginSeasonalitySeasonality::getTypeName(2), $start, countElementsInTable($this->getTable(), "`".$this->getTable()."`.`itilcategories_id` = '".$item->fields['id']."'"));
+         $dbu = new DbUtils();
+         Html::printAjaxPager(PluginSeasonalitySeasonality::getTypeName(2),
+                              $start,
+                              $dbu->countElementsInTable($this->getTable(),
+                                                         "`".$this->getTable()."`.`itilcategories_id` = '".$item->fields['id']."'"));
          echo "<table class='tab_cadre_fixehov'>";
          echo "<tr class='tab_bg_1'>";
          echo "<th width='10'>";
