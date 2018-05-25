@@ -44,19 +44,21 @@ function plugin_init_seasonality() {
          Plugin::registerClass('PluginSeasonalityItem', ['addtabon' => 'ITILCategory']);
          Plugin::registerClass('PluginSeasonalityItem', ['addtabon' => 'PluginSeasonalitySeasonality']);
       }
-      
+
       // Add specific files to add to the header : javascript or css
       $PLUGIN_HOOKS['add_javascript']['seasonality'] = ["lib/daterangepicker/jquery.comiseo.daterangepicker.min.js",
                                                              "lib/daterangepicker/moment.min.js"];
-      
+
       if (strpos($_SERVER['REQUEST_URI'], "ticket.form.php") !== false
             || strpos($_SERVER['REQUEST_URI'], "helpdesk.public.php") !== false
             || strpos($_SERVER['REQUEST_URI'], "tracking.injector.php") !== false) {
-         $PLUGIN_HOOKS['add_javascript']['seasonality'][] = 'scripts/seasonality.js';
-         $PLUGIN_HOOKS['add_javascript']['seasonality'][] = 'scripts/seasonality_load_scripts.js';
+         $PLUGIN_HOOKS['javascript']['seasonality'][] = '/plugins/seasonality/scripts/seasonality.js';
+         $PLUGIN_HOOKS['javascript']['seasonality'][] = '/plugins/seasonality/scripts/seasonality_load_scripts.js';
+
+         Html::requireJs('seasonality');
       }
-      
-      // Css 
+
+      // Css
       $PLUGIN_HOOKS['add_css']['seasonality'] = ["lib/daterangepicker/jquery.comiseo.daterangepicker.css"];
 
       // Purge
@@ -64,7 +66,7 @@ function plugin_init_seasonality() {
          'PluginSeasonalitySeasonality' => ['PluginSeasonalityItem', 'purgeItem'],
          'Profile'                      => ['PluginSeasonalityProfile', 'purgeProfiles']
       ];
-      
+
       $PLUGIN_HOOKS['plugin_datainjection_populate']['seasonality'] = 'plugin_datainjection_populate_seasonality';
    }
    // End init, when all types are registered

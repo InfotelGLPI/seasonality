@@ -29,21 +29,21 @@
 
 include ('../../../inc/includes.php');
 
-Html::header_nocache();
+//Html::header_nocache();
 Session::checkLoginUser();
 header("Content-Type: text/html; charset=UTF-8");
 
 if (isset($_POST['action'])) {
    switch ($_POST['action']) {
       case "load" :
-         if (strpos($_SERVER['HTTP_REFERER'], "ticket.form.php") !== false 
+         if (strpos($_SERVER['HTTP_REFERER'], "ticket.form.php") !== false
                || strpos($_SERVER['HTTP_REFERER'], "helpdesk.public.php") !== false
                || strpos($_SERVER['HTTP_REFERER'], "tracking.injector.php") !== false) {
 
             $rand = mt_rand();
 
             $params = ['root_doc' => $CFG_GLPI['root_doc']];
-                        
+
             echo "<script type='text/javascript'>";
             echo "var seasonality = $(document).seasonality(".json_encode($params).");";
             echo "seasonality.addelements();";

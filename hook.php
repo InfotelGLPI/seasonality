@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of seasonality.
 
  seasonality is free software; you can redistribute it and/or modify
@@ -51,7 +51,7 @@ function plugin_seasonality_uninstall() {
 
    foreach ($tables as $table)
       $DB->query("DROP TABLE IF EXISTS `$table`;");
-   
+
    return true;
 }
 
@@ -61,17 +61,17 @@ function plugin_seasonality_postinit() {
 
 function plugin_seasonality_getAddSearchOptions($itemtype) {
    $tab = [];
-   
+
    if ($itemtype == 'ITILCategory') {
       $item = new PluginSeasonalityItem();
       $tab = $item->getAddSearchOptions();
    }
-   
+
    return $tab;
 }
 
 function plugin_seasonality_MassiveActions($type) {
-   
+
    switch($type){
       case 'ITILCategory':
          $item = new PluginSeasonalityItem();
@@ -82,7 +82,7 @@ function plugin_seasonality_MassiveActions($type) {
 
 function plugin_datainjection_populate_seasonality() {
    global $INJECTABLE_TYPES;
-   
+
    $INJECTABLE_TYPES['PluginSeasonalityItemInjection'] = 'seasonality';
    $INJECTABLE_TYPES['PluginSeasonalitySeasonalityInjection'] = 'seasonality';
 }

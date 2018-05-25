@@ -57,7 +57,7 @@ if (isset($_POST["add"])) {
    $seasonality = new PluginSeasonalitySeasonality();
    $seasonality->checkGlobal(READ);
    Html::header(PluginSeasonalitySeasonality::getTypeName(1), '', "helpdesk", "pluginseasonalityseasonality", "seasonality");
-   
+
    $item->getFromDB($_GET['id']);
    $_GET['id'] = $item->fields['plugin_seasonality_seasonalities_id'];
    $seasonality->display($_GET);
