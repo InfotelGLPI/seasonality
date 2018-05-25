@@ -42,7 +42,7 @@ if (isset($_POST['action'])) {
 
             $rand = mt_rand();
 
-            $params = array('root_doc' => $CFG_GLPI['root_doc']);
+            $params = ['root_doc' => $CFG_GLPI['root_doc']];
                         
             echo "<script type='text/javascript'>";
             echo "var seasonality = $(document).seasonality(".json_encode($params).");";

@@ -32,22 +32,22 @@ function plugin_init_seasonality() {
    global $PLUGIN_HOOKS, $CFG_GLPI;
 
    $PLUGIN_HOOKS['csrf_compliant']['seasonality'] = true;
-   $PLUGIN_HOOKS['change_profile']['seasonality'] = array('PluginSeasonalityProfile', 'changeProfile');
+   $PLUGIN_HOOKS['change_profile']['seasonality'] = ['PluginSeasonalityProfile', 'changeProfile'];
 
    if (Session::getLoginUserID()) {
-      Plugin::registerClass('PluginSeasonalityProfile', array('addtabon' => 'Profile'));
+      Plugin::registerClass('PluginSeasonalityProfile', ['addtabon' => 'Profile']);
 
       // Display a menu entry
       if (Session::haveRight("plugin_seasonality", READ)) {
          $PLUGIN_HOOKS['use_massive_action']['seasonality']  = 1;
-         $PLUGIN_HOOKS['menu_toadd']['seasonality']          = array('helpdesk' => 'PluginSeasonalitySeasonality');
-         Plugin::registerClass('PluginSeasonalityItem', array('addtabon' => 'ITILCategory'));
-         Plugin::registerClass('PluginSeasonalityItem', array('addtabon' => 'PluginSeasonalitySeasonality'));
+         $PLUGIN_HOOKS['menu_toadd']['seasonality']          = ['helpdesk' => 'PluginSeasonalitySeasonality'];
+         Plugin::registerClass('PluginSeasonalityItem', ['addtabon' => 'ITILCategory']);
+         Plugin::registerClass('PluginSeasonalityItem', ['addtabon' => 'PluginSeasonalitySeasonality']);
       }
       
       // Add specific files to add to the header : javascript or css
-      $PLUGIN_HOOKS['add_javascript']['seasonality'] = array("lib/daterangepicker/jquery.comiseo.daterangepicker.min.js", 
-                                                             "lib/daterangepicker/moment.min.js");
+      $PLUGIN_HOOKS['add_javascript']['seasonality'] = ["lib/daterangepicker/jquery.comiseo.daterangepicker.min.js",
+                                                             "lib/daterangepicker/moment.min.js"];
       
       if (strpos($_SERVER['REQUEST_URI'], "ticket.form.php") !== false
             || strpos($_SERVER['REQUEST_URI'], "helpdesk.public.php") !== false
@@ -57,13 +57,13 @@ function plugin_init_seasonality() {
       }
       
       // Css 
-      $PLUGIN_HOOKS['add_css']['seasonality'] = array("lib/daterangepicker/jquery.comiseo.daterangepicker.css");
+      $PLUGIN_HOOKS['add_css']['seasonality'] = ["lib/daterangepicker/jquery.comiseo.daterangepicker.css"];
 
       // Purge
-      $PLUGIN_HOOKS['pre_item_purge']['seasonality'] = array(
-         'PluginSeasonalitySeasonality' => array('PluginSeasonalityItem', 'purgeItem'),
-         'Profile'                      => array('PluginSeasonalityProfile', 'purgeProfiles')
-      );
+      $PLUGIN_HOOKS['pre_item_purge']['seasonality'] = [
+         'PluginSeasonalitySeasonality' => ['PluginSeasonalityItem', 'purgeItem'],
+         'Profile'                      => ['PluginSeasonalityProfile', 'purgeProfiles']
+      ];
       
       $PLUGIN_HOOKS['plugin_datainjection_populate']['seasonality'] = 'plugin_datainjection_populate_seasonality';
    }
@@ -74,14 +74,14 @@ function plugin_init_seasonality() {
 // Get the name and the version of the plugin - Needed
 function plugin_version_seasonality() {
 
-   return array(
+   return [
       'name'           => _n('Seasonality', 'Seasonalities', 2, 'seasonality'),
       'version'        => '1.3.0',
       'license'        => 'GPLv2+',
       'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a> & Ludovic Dupont",
       'homepage'       => 'https://github.com/InfotelGLPI/seasonality',
       'minGlpiVersion' => '9.2',
-   );
+   ];
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect

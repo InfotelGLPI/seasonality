@@ -49,7 +49,7 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     * @param $ID        integer  ID of the item
     * @param $options   array    options used
     */
-   function showForm($ID, $options=array()) {
+   function showForm($ID, $options=[]) {
    
       $this->initForm($ID, $options);
       $this->showFormHeader($options);
@@ -57,13 +57,13 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td>".__('Name')."&nbsp;<span class='red'>*</span></td>";
       echo "<td>";
-      Html::autocompletionTextField($this, "name", array('value' => $this->fields['name']));
+      Html::autocompletionTextField($this, "name", ['value' => $this->fields['name']]);
       echo "</td>";
       echo "<td>";
       echo __('Urgency')."&nbsp;<span class='red'>*</span>";
       echo "</td>";
       echo "<td>";
-      Ticket::dropdownUrgency(array('value' => $this->fields["urgency"]));
+      Ticket::dropdownUrgency(['value' => $this->fields["urgency"]]);
       echo "</td>";
       echo "</tr>";
       
@@ -145,7 +145,7 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
          return 'NULL';
       }
       
-      $dates = array($begin_date, $end_date);
+      $dates = [$begin_date, $end_date];
       
       if ($periodicity > 0) {
          $yearDiff = date('Y', strtotime($end_date)) - date('Y', strtotime($begin_date));
@@ -231,51 +231,78 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
    * 
    * @return array
    */
-   function getSearchOptions(){
-      $tab = parent::getSearchOptions();
-      
-      $tab[3]['table']          = 'glpi_entities';
-      $tab[3]['field']          = 'name';
-      $tab[3]['name']           = __('Entity');
-      $tab[3]['datatype']       = 'dropdown';
-      
-      $tab[4]['table']          = $this->getTable();
-      $tab[4]['field']          = 'is_recursive';
-      $tab[4]['name']           = __('Recursive');
-      $tab[4]['datatype']       = 'bool';
- 
-      $tab[5]['table']          = $this->getTable();
-      $tab[5]['field']          = 'begin_date';
-      $tab[5]['name']           = __('Begin date');
-      $tab[5]['datatype']       = 'datetime';
-            
-      $tab[6]['table']          = $this->getTable();
-      $tab[6]['field']          = 'end_date';
-      $tab[6]['name']           = __('End date');
-      $tab[6]['datatype']       = 'datetime';
-      
-      $tab[7]['table']          = 'glpi_itilcategories';
-      $tab[7]['field']          = 'name';
-      $tab[7]['name']           = __('Category');
-      $tab[7]['datatype']       = 'dropdown';
-      $tab[7]['forcegroupby']   = true;
-      $tab[7]['massiveaction']  = false;
-      $tab[7]['joinparams']     = array('beforejoin'
-                                         => array('table'      => 'glpi_plugin_seasonality_items',
-                                                  'joinparams' => array('jointype'   => 'child')));
-      
-      $tab[8]['table']          = $this->getTable();
-      $tab[8]['field']          = 'periodicity';
-      $tab[8]['name']           = __('Recurrent');
-      $tab[8]['datatype']       = 'bool';
-      
-      $tab[9]['table']          = $this->getTable();
-      $tab[9]['field']          = 'urgency';
-      $tab[9]['name']           = __('Urgency');
-      $tab[9]['datatype']       = 'specific';
-      $tab[9]['searchtype']     = 'equals';
-      $tab[9]['massiveaction']  = true;
-      
+   function rawSearchOptions(){
+
+      $tab = parent::rawSearchOptions();
+
+      $tab[] = [
+         'id'                 => '3',
+         'table'              => 'glpi_entities',
+         'field'              => 'name',
+         'name'               => __('Entity'),
+         'datatype'           => 'dropdown'
+      ];
+
+      $tab[] = [
+         'id'                 => '4',
+         'table'              => $this->getTable(),
+         'field'              => 'is_recursive',
+         'name'               => __('Recursive'),
+         'datatype'           => 'bool'
+      ];
+
+      $tab[] = [
+         'id'                 => '5',
+         'table'              => $this->getTable(),
+         'field'              => 'begin_date',
+         'name'               => __('Begin date'),
+         'datatype'           => 'datetime'
+      ];
+
+      $tab[] = [
+         'id'                 => '6',
+         'table'              => $this->getTable(),
+         'field'              => 'end_date',
+         'name'               => __('End date'),
+         'datatype'           => 'datetime'
+      ];
+
+      $tab[] = [
+         'id'                 => '7',
+         'table'              => 'glpi_itilcategories',
+         'field'              => 'name',
+         'name'               => __('Category'),
+         'datatype'           => 'dropdown',
+         'forcegroupby'       => true,
+         'massiveaction'      => false,
+         'joinparams'         => [
+            'beforejoin'         => [
+               'table'              => 'glpi_plugin_seasonality_items',
+               'joinparams'         => [
+                  'jointype'           => 'child'
+               ]
+            ]
+         ]
+      ];
+
+      $tab[] = [
+         'id'                 => '8',
+         'table'              => $this->getTable(),
+         'field'              => 'periodicity',
+         'name'               => __('Recurrent'),
+         'datatype'           => 'bool'
+      ];
+
+      $tab[] = [
+         'id'                 => '9',
+         'table'              => $this->getTable(),
+         'field'              => 'urgency',
+         'name'               => __('Urgency'),
+         'datatype'           => 'specific',
+         'searchtype'         => 'equals',
+         'massiveaction'      => true
+      ];
+
       return $tab;
    }
    
@@ -285,17 +312,17 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     * @param $values            (default '')
     * @param $options   array
     * */
-   static function getSpecificValueToSelect($field, $name = '', $values = '', array $options = array()) {
+   static function getSpecificValueToSelect($field, $name = '', $values = '', array $options = []) {
 
       if (!is_array($values)) {
-         $values = array($field => $values);
+         $values = [$field => $values];
       }
       $options['display'] = false;
 
       switch ($field) {
          case 'urgency' :
             $options['value'] = $values[$field];
-            return Ticket::dropdownUrgency(array('name' => $name,'value' => $values[$field], 'display' => false));
+            return Ticket::dropdownUrgency(['name' => $name,'value' => $values[$field], 'display' => false]);
       }
       return parent::getSpecificValueToSelect($field, $name, $values, $options);
    }
@@ -305,9 +332,9 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     * @param $values
     * @param $options   array
     * */
-   static function getSpecificValueToDisplay($field, $values, array $options = array()) {
+   static function getSpecificValueToDisplay($field, $values, array $options = []) {
       if (!is_array($values)) {
-         $values = array($field => $values);
+         $values = [$field => $values];
       }
       switch ($field) {
          case 'urgency':
@@ -323,13 +350,13 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
    * @return boolean
    */
    function checkMandatoryFields($input){
-      $msg     = array();
+      $msg     = [];
       $checkKo = false;
       
-      $mandatory_fields = array('end_date'          => __('End date'),
+      $mandatory_fields = ['end_date'          => __('End date'),
                                 'begin_date'        => __('Begin date'),
                                 'name'              => __('Name'),
-                                'urgency'           => __('Urgency'));
+                                'urgency'           => __('Urgency')];
 
       foreach ($input as $key => $value) {
          if (array_key_exists($key, $mandatory_fields)) {
@@ -352,7 +379,7 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     */
    static function getMenuContent() {
       $plugin_page =  PluginSeasonalitySeasonality::getSearchURL(false);
-      $menu = array();
+      $menu = [];
       //Menu entry in helpdesk
       $menu['title']                          = PluginSeasonalitySeasonality::getTypeName(2);
       $menu['page']                           = $plugin_page;

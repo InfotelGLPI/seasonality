@@ -76,7 +76,7 @@ class PluginSeasonalityProfile extends Profile {
          $prof = new self();
 
          self::addDefaultProfileInfos($ID, 
-                                 array('plugin_seasonality' => 0));
+                                 ['plugin_seasonality' => 0]);
          $prof->showForm($ID);
       }
       
@@ -93,7 +93,7 @@ class PluginSeasonalityProfile extends Profile {
    function showForm ($profiles_id=0, $openform=TRUE, $closeform=TRUE) {
       
       echo "<div class='firstbloc'>";
-      if (($canedit = Session::haveRightsOr(self::$rightname, array(CREATE, UPDATE, PURGE)))
+      if (($canedit = Session::haveRightsOr(self::$rightname, [CREATE, UPDATE, PURGE]))
           && $openform) {
          $profile = new Profile();
          echo "<form method='post' action='".$profile->getFormURL()."'>";
@@ -103,15 +103,15 @@ class PluginSeasonalityProfile extends Profile {
       $profile->getFromDB($profiles_id);
 
       $rights = $this->getAllRights();
-      $profile->displayRightsChoiceMatrix($rights, array('canedit'       => $canedit,
+      $profile->displayRightsChoiceMatrix($rights, ['canedit'       => $canedit,
                                                          'default_class' => 'tab_bg_2',
-                                                         'title'         => __('General')));
+                                                         'title'         => __('General')]);
      
       if ($canedit
           && $closeform) {
          echo "<div class='center'>";
-         echo Html::hidden('id', array('value' => $profiles_id));
-         echo Html::submit(_sx('button', 'Save'), array('name' => 'update'));
+         echo Html::hidden('id', ['value' => $profiles_id]);
+         echo Html::submit(_sx('button', 'Save'), ['name' => 'update']);
          echo "</div>\n";
          Html::closeForm();
       }
@@ -128,12 +128,12 @@ class PluginSeasonalityProfile extends Profile {
    */
    static function getAllRights($all = false) {
 
-      $rights = array(
-          array('itemtype'  => 'PluginSeasonalitySeasonality',
+      $rights = [
+          ['itemtype'  => 'PluginSeasonalitySeasonality',
                 'label'     => __('Seasonality', 'seasonality'),
                 'field'     => 'plugin_seasonality'
-          )
-      );
+          ]
+      ];
       
       return $rights;
    }
@@ -176,7 +176,7 @@ class PluginSeasonalityProfile extends Profile {
       foreach ($DB->request('glpi_plugin_seasonality_profiles', 
                             "`profiles_id`='$profiles_id'") as $profile_data) {
 
-         $matching = array('seasonality' => 'plugin_seasonality');
+         $matching = ['seasonality' => 'plugin_seasonality'];
          $current_rights = ProfileRight::getProfileRights($profiles_id, array_values($matching));
          foreach ($matching as $old => $new) {
             if (!isset($current_rights[$old])) {
@@ -200,7 +200,7 @@ class PluginSeasonalityProfile extends Profile {
       foreach ($profile->getAllRights(true) as $data) {
          if ($dbu->countElementsInTable("glpi_profilerights",
                                        "`name` = '".$data['field']."'") == 0) {
-            ProfileRight::addProfileRights(array($data['field']));
+            ProfileRight::addProfileRights([$data['field']]);
          }
       }
       
@@ -233,7 +233,7 @@ class PluginSeasonalityProfile extends Profile {
 
    static function createFirstAccess($profiles_id) {
 
-      $rights = array('plugin_seasonality' => ALLSTANDARDRIGHT);
+      $rights = ['plugin_seasonality' => ALLSTANDARDRIGHT];
 
       self::addDefaultProfileInfos($profiles_id, 
                                    $rights, true);
@@ -250,7 +250,7 @@ class PluginSeasonalityProfile extends Profile {
       foreach ($rights as $right => $value) {
          if ($dbu->countElementsInTable('glpi_profilerights',
                                    "`profiles_id`='$profiles_id' AND `name`='$right'") && $drop_existing) {
-            $profileRight->deleteByCriteria(array('profiles_id' => $profiles_id, 'name' => $right));
+            $profileRight->deleteByCriteria(['profiles_id' => $profiles_id, 'name' => $right]);
          }
          if (!$dbu->countElementsInTable('glpi_profilerights',
                                    "`profiles_id`='$profiles_id' AND `name`='$right'")) {
