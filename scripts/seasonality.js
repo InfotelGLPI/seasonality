@@ -7,7 +7,7 @@
          * Start the plugin
          */
         function init() {
-            object.params = new [];
+            object.params = new Array();
             object.params['root_doc'] = '';
 
             if (options != undefined) {
