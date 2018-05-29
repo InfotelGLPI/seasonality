@@ -1,10 +1,9 @@
 (function ($) {
     $.fn.seasonality = function (options) {
-
         var object = this;
         init();
 
-        /** 
+        /**
          * Start the plugin
          */
         function init() {
@@ -21,20 +20,20 @@
 //            object.initValues = new Array();
         }
 
-        /** 
+        /**
          * Add elements to ticket or central
          */
         this.addelements = function () {
             $(document).ready(function () {
                 // Get tickets_id
                 var tickets_id = object.urlParam(window.location.href, 'id');
-
                 // CENTRAL
                 if (location.pathname.indexOf('ticket.form.php') > 0 && !object.isIE()) {
-                    // Launched on each complete Ajax load 
+
+                    // Launched on each complete Ajax load
                     $(document).ajaxComplete(function (event, xhr, option) {
-                        // We execute the code only if the central form display request is done 
-                        if (option.url != undefined && (option.url.indexOf('common.tabs.php') > 0)) {
+                        // We execute the code only if the central form display request is done
+                        if (option.url != undefined && (option.url.indexOf('loadscripts.php') > 0)) {
                             // Delay the execution (ajax requestcomplete event fired before dom loading)
                             setTimeout(function () {
                                 var itilcategoriesIdElm = $('select[name="itilcategories_id"], input[name="itilcategories_id"]');
@@ -43,7 +42,7 @@
                                 if (tickets_id == 0 || tickets_id == undefined){
                                     itilcategoriesIdElm.off( "change" );
                                 }
-                                
+
 //                                object.saveCurrentTicket();
                                 object.loadUrgency(tickets_id, false);
 
@@ -54,7 +53,7 @@
                             }, 100);
                         }
                     }, this);
-                
+
                 // POST ONLY
                 } else if (location.pathname.indexOf('helpdesk.public.php') > 0 || location.pathname.indexOf('tracking.injector.php') > 0 || object.isIE()){
                     var itilcategoriesIdElm = $('select[name="itilcategories_id"], input[name="itilcategories_id"]');
@@ -63,10 +62,10 @@
                     if (tickets_id == 0 || tickets_id == undefined){
                         itilcategoriesIdElm.off( "change" );
                     }
-                    
+
 //                    object.saveCurrentTicket();
                     object.loadUrgency(tickets_id, false);
-                    
+
                     // On change itilcategory
                     itilcategoriesIdElm.on('change', function () {
                         object.loadUrgency(tickets_id, true);
@@ -74,7 +73,7 @@
                 }
             });
         }
-        
+
 //        /** 
 //         * Save curent ticket
 //         */
@@ -85,7 +84,7 @@
 //            object.initValues['priority'] = $("select[name='priority'], input[name='priority']").val();
 //        }
 //        
-        /** 
+        /**
          * Restore curent ticket
          */
         this.restoreCurrentTicket = function (json){
@@ -94,10 +93,10 @@
             $('select[name="impact"], input[name="impact"]').select2("val", json.default_impact);
             $('select[name="priority"], input[name="priority"]').select2("val", json.default_priority);
         }
-        
-        /** 
+
+        /**
          * Load urgency
-         * 
+         *
          * @param string tickets_id
          */
         this.loadUrgency = function (tickets_id, reload){
@@ -107,7 +106,7 @@
             var urgence_block       = $("select[name='urgency'], input[name='urgency']");
             var type                = $("select[name='type'], input[name='type']");
             var entities_id         = $("input[name='entities_id']");
- 
+
             if (urgence_block.length != 0) {
                 $.ajax({
                     url: root_doc + '/plugins/seasonality/ajax/ticket.php',
@@ -172,9 +171,9 @@
             }
         }
 
-        /** 
+        /**
          * Get url parameter
-         * 
+         *
          * @param string url
          * @param string name
          */
@@ -184,8 +183,8 @@
                 return results[1] || 0;
             }
         }
-        
-        /** 
+
+        /**
          * Is IE navigator
          */
         this.isIE = function () {

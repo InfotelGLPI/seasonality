@@ -1,5 +1,5 @@
 
-/** 
+/**
  *  Load plugin scripts on page start
  */
 (function ($) {

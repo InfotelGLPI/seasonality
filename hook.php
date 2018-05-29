@@ -46,8 +46,8 @@ function plugin_seasonality_uninstall() {
    global $DB;
 
    // Plugin tables deletion
-   $tables = array("glpi_plugin_seasonality_seasonalities", 
-                   "glpi_plugin_seasonality_items");
+   $tables = ["glpi_plugin_seasonality_seasonalities",
+                   "glpi_plugin_seasonality_items"];
 
    foreach ($tables as $table)
       $DB->query("DROP TABLE IF EXISTS `$table`;");
@@ -60,7 +60,7 @@ function plugin_seasonality_postinit() {
 }
 
 function plugin_seasonality_getAddSearchOptions($itemtype) {
-   $tab = array();
+   $tab = [];
    
    if ($itemtype == 'ITILCategory') {
       $item = new PluginSeasonalityItem();

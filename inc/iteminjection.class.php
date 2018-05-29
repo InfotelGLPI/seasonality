@@ -46,7 +46,7 @@ class PluginSeasonalityItemInjection extends PluginSeasonalityItem
    }
 
    function connectedTo() {
-      return array();
+      return [];
    }
 
    function getOptions($primary_type = '') {
@@ -55,9 +55,9 @@ class PluginSeasonalityItemInjection extends PluginSeasonalityItem
 
       //$blacklist = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions();
       //Remove some options because some fields cannot be imported
-      $notimportable = array();
+      $notimportable = [];
       $options['ignore_fields'] = $notimportable;
-      $options['displaytype'] = array("relation" => array(180));
+      $options['displaytype'] = ["relation" => [180]];
 
       $tab = PluginDatainjectionCommonInjectionLib::addToSearchOptions($tab, $options, $this);
 
@@ -71,7 +71,7 @@ class PluginSeasonalityItemInjection extends PluginSeasonalityItem
     * @param options options used during creation
     * @return an array of IDs of newly created objects : for example array(Computer=>1, Networkport=>10)
     */
-   function addOrUpdateObject($values=array(), $options=array()) {
+   function addOrUpdateObject($values=[], $options=[]) {
 
       $lib = new PluginDatainjectionCommonInjectionLib($this,$values,$options);
       $lib->processAddOrUpdate();
@@ -90,8 +90,8 @@ class PluginSeasonalityItemInjection extends PluginSeasonalityItem
    function customimport($toinject, $add, $rights){
 
       $item = new PluginSeasonalityItem();
-      return $item->add(array('itilcategories_id'                   => $toinject['items_id'], 
-                              'plugin_seasonality_seasonalities_id' => $toinject['plugin_seasonality_seasonalities_id']));
+      return $item->add(['itilcategories_id'                   => $toinject['items_id'],
+                              'plugin_seasonality_seasonalities_id' => $toinject['plugin_seasonality_seasonalities_id']]);
    }
 }
 
