@@ -538,22 +538,19 @@ class PluginSeasonalityItem extends CommonDBTM {
    * @return array
    */
    function getAddSearchOptions(){
-      $tab = [];
-
-      $tab[] = [
-         'id' => '180',
-         'table'=> 'glpi_plugin_seasonality_seasonalities',
-         'field'          => 'name',
-         'name'           => self::getTypeName(2),
-         'datatype'       => 'dropdown',
-         'forcegroupby'   => true,
-         'massiveaction'  => false,
-         'displaytype'    => 'relation',
-         'relationclass'  => 'PluginSeasonalityItem',
-         'joinparams'     => ['beforejoin'
-                                   => ['table'      => 'glpi_plugin_seasonality_items',
-                                            'joinparams' => ['jointype'   => 'child']]]
-      ];
+      $tab = array();
+      
+      $tab[180]['table']          = 'glpi_plugin_seasonality_seasonalities';
+      $tab[180]['field']          = 'name';
+      $tab[180]['name']           = self::getTypeName(2);
+      $tab[180]['datatype']       = 'dropdown';
+      $tab[180]['forcegroupby']   = true;
+      $tab[180]['massiveaction']  = false;
+      $tab[180]['displaytype']    = 'relation';
+      $tab[180]['relationclass']  = 'PluginSeasonalityItem';
+      $tab[180]['joinparams']     = array('beforejoin'
+                                            => array('table'      => 'glpi_plugin_seasonality_items',
+                                                     'joinparams' => array('jointype'   => 'child')));
             
       return $tab;
    }
@@ -563,27 +560,22 @@ class PluginSeasonalityItem extends CommonDBTM {
    * 
    * @return array
    */
-   function rawSearchOptions(){
-      $tab = [];
-
-      $tab[] = [
-         'id'                 => '3',
-         'table'              => $this->getTable(),
-         'field'              => 'itilcategories_id',
-         'name'               => 'Itilcategories id',
-         'datatype'           => 'dropdown',
-         'massiveaction'  => false,
-         'search'         => false
-      ];
-      $tab[] = [
-         'id'                 => '4',
-         'table'              => $this->getTable(),
-         'field'              => 'plugin_seasonality_seasonalities_id',
-         'name'               => 'Seasonalities id',
-         'datatype'           => 'dropdown',
-         'massiveaction'  => false,
-         'search'         => false
-      ];
+   function getSearchOptions(){
+      $tab = array();
+      
+      $tab[3]['table']          = $this->getTable();
+      $tab[3]['field']          = 'itilcategories_id';
+      $tab[3]['name']           = 'Itilcategories id';
+      $tab[3]['datatype']       = 'dropdown';
+      $tab[3]['massiveaction']  = false;
+      $tab[3]['search']         = false;
+      
+      $tab[4]['table']          = $this->getTable();
+      $tab[4]['field']          = 'plugin_seasonality_seasonalities_id';
+      $tab[4]['name']           = 'Seasonalities id';
+      $tab[4]['datatype']       = 'dropdown';
+      $tab[4]['massiveaction']  = false;
+      $tab[4]['search']         = false;
       
       return $tab;
    }
