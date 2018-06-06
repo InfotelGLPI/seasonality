@@ -29,7 +29,7 @@
 
 include ('../../../inc/includes.php');
 
-Html::header_nocache();
+//Html::header_nocache();
 Session::checkLoginUser();
 header("Content-Type: text/html; charset=UTF-8");
 

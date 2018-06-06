@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Seasonality Development Team
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the GLPI - Seasonality plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Seasonality plugin 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-26 12:11+0200\n"
+"POT-Creation-Date: 2018-05-29 10:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: setup.php:78 inc/item.class.php:706 inc/profile.class.php:44
+#: setup.php:80 inc/item.class.php:720 inc/profile.class.php:44
 #: inc/profile.class.php:133 inc/seasonality.class.php:43
 msgid "Seasonality"
 msgid_plural "Seasonalities"
 msgstr[0] ""
 msgstr[1] ""
-
-#: setup.php:90
-msgid "This plugin requires GLPI >= 0.90"
-msgstr ""
 
 #: inc/item.class.php:43
 msgid "Seasonality item"
@@ -39,15 +35,15 @@ msgstr[1] ""
 msgid "Add a category"
 msgstr ""
 
-#: inc/item.class.php:593
+#: inc/item.class.php:607
 msgid "Add seasonality"
 msgstr ""
 
-#: inc/item.class.php:594
+#: inc/item.class.php:608
 msgid "Delete seasonality"
 msgstr ""
 
-#: inc/item.class.php:739
+#: inc/item.class.php:753
 msgid "Cannot add two seasonalities with same date interval"
 msgstr ""
 
