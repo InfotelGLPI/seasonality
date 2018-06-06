@@ -468,7 +468,7 @@ class PluginSeasonalityItem extends CommonDBTM {
                $urgency_id         = $data["urgency"];
 
                $seasonality->getFromDB($data["plugin_seasonality_seasonalities_id"]);
-                if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
+                if ($_SESSION['glpiactiveprofile']['interface'] == 'central' && self::canUpdate()) {
                   $seasonalities_link = "<div id='seasonalities_link'>".$seasonality->getLink(['linkoption' => 'target="_blank"'])."</div>";
                } else {
                   $seasonalities_link = "<div id='seasonalities_link'>".$seasonality->fields['name']."</div>";
