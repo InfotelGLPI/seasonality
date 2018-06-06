@@ -30,7 +30,8 @@
 include ('../../../inc/includes.php');
 
 Session::checkLoginUser();
-Html::header_nocache();
+
+//Html::header_nocache();
 
 if (!isset($_POST['tickets_id']) || empty($_POST['tickets_id'])){
    $_POST['tickets_id'] = 0;
@@ -40,7 +41,6 @@ switch($_POST['action']){
    case 'changeUrgency':
       header("Content-Type: text/html; charset=UTF-8");
       $item = new PluginSeasonalityItem();
-
       echo json_encode($item->getUrgencyFromCategory($_POST['itilcategories_id'], $_POST['tickets_id'], $_POST['date'], $_POST['type'], $_POST['entities_id']));
       break;
 }

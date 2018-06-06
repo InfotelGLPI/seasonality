@@ -28,11 +28,11 @@
             $(document).ready(function () {
                 // Get tickets_id
                 var tickets_id = object.urlParam(window.location.href, 'id');
+
                 // CENTRAL
                 if (location.pathname.indexOf('ticket.form.php') > 0 && !object.isIE()) {
-
                     // Launched on each complete Ajax load
-                        $(document).ajaxComplete(function (event, xhr, option) {
+                    $(document).ajaxComplete(function (event, xhr, option) {
                         // We execute the code only if the central form display request is done
                         if (option.url != undefined && (option.url.indexOf('loadscripts.php') > 0)) {
                             // Delay the execution (ajax requestcomplete event fired before dom loading)
@@ -124,7 +124,6 @@
                         if ($('#seasonalities_link').length != 0) {
                             $('#seasonalities_link').remove();
                         }
-
 
                         if (!json.error) {
                             var priorityElm = $('select[name="priority"], input[name="priority"]');

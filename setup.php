@@ -66,7 +66,7 @@ function plugin_init_seasonality() {
          'PluginSeasonalitySeasonality' => ['PluginSeasonalityItem', 'purgeItem'],
          'Profile'                      => ['PluginSeasonalityProfile', 'purgeProfiles']
       ];
-
+      
       $PLUGIN_HOOKS['plugin_datainjection_populate']['seasonality'] = 'plugin_datainjection_populate_seasonality';
    }
    // End init, when all types are registered
