@@ -52,9 +52,9 @@ class PluginSeasonalityItem extends CommonDBTM {
       switch ($item->getType()) {
          case 'PluginSeasonalitySeasonality':
             $temp = new self();
-            $temp->deleteByCriteria(array(
+            $temp->deleteByCriteria([
                 'plugin_seasonality_seasonalities_id' => $item->getField("id")
-            ), 1);
+            ], 1);
       }
    }
    
@@ -116,7 +116,7 @@ class PluginSeasonalityItem extends CommonDBTM {
       $plugin_seasonality_seasonalities_id = 0;
       
       $data = $this->getItemsForCategory($item->fields['id']);
-      $used = array();
+      $used = [];
       foreach ($data as $val) {
          $used[] = $val['plugin_seasonality_seasonalities_id'];
       }
@@ -127,7 +127,7 @@ class PluginSeasonalityItem extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td class='center'>".PluginSeasonalitySeasonality::getTypeName(1)." <span class='red'>*</span></td>";
       echo "<td class='center'>";
-      Dropdown::show('PluginSeasonalitySeasonality', array('used' => $used, 'entity' => $item->getField('entities_id'), 'entity_sons' => $item->getField('is_recursive')));
+      Dropdown::show('PluginSeasonalitySeasonality', ['used' => $used, 'entity' => $item->getField('entities_id'), 'entity_sons' => $item->getField('is_recursive')]);
       echo "</td>";
       echo "</tr>";
       
@@ -161,7 +161,7 @@ class PluginSeasonalityItem extends CommonDBTM {
       $canedit = $seasonality->can($seasonality->fields['id'], UPDATE) && $this->canCreate();
       
       $data = $this->getItems($seasonality->fields['id']);
-      $used = array();
+      $used = [];
       foreach ($data as $val) {
          $used[] = $val['itilcategories_id'];
       }
@@ -172,7 +172,7 @@ class PluginSeasonalityItem extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td class='center'>".__('Category')." <span class='red'>*</span></td>";
       echo "<td class='center'>";
-      Dropdown::show('ITILCategory', array('entity' => $seasonality->getField('entities_id'), 'entity_sons' => $seasonality->getField('is_recursive'), 'used' => $used));
+      Dropdown::show('ITILCategory', ['entity' => $seasonality->getField('entities_id'), 'entity_sons' => $seasonality->getField('is_recursive'), 'used' => $used]);
       echo "</td>";
       echo "</tr>";
       
@@ -217,11 +217,13 @@ class PluginSeasonalityItem extends CommonDBTM {
          echo "<div class='center'>";
          if ($canedit) {
             Html::openMassiveActionsForm('mass'.__CLASS__.$rand);
-            $massiveactionparams = array('item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand);
+            $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand];
             Html::showMassiveActions($massiveactionparams);
          }
-
-         Html::printAjaxPager(__('Category'), $start, countElementsInTable($this->getTable(), "`".$this->getTable()."`.`plugin_seasonality_seasonalities_id` = '".$item->fields['id']."'"));
+         $dbu = new DbUtils();
+         Html::printAjaxPager(__('Category'), $start,
+                              $dbu->countElementsInTable($this->getTable(),
+                                                         "`".$this->getTable()."`.`plugin_seasonality_seasonalities_id` = '".$item->fields['id']."'"));
          echo "<table class='tab_cadre_fixehov'>";
          echo "<tr class='tab_bg_1'>";
          echo "<th width='10'>";
@@ -278,11 +280,15 @@ class PluginSeasonalityItem extends CommonDBTM {
          echo "<div class='center'>";
          if ($canedit) {
             Html::openMassiveActionsForm('mass'.__CLASS__.$rand);
-            $massiveactionparams = array('item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand);
+            $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand];
             Html::showMassiveActions($massiveactionparams);
          }
 
-         Html::printAjaxPager(PluginSeasonalitySeasonality::getTypeName(2), $start, countElementsInTable($this->getTable(), "`".$this->getTable()."`.`itilcategories_id` = '".$item->fields['id']."'"));
+         $dbu = new DbUtils();
+         Html::printAjaxPager(PluginSeasonalitySeasonality::getTypeName(2),
+                              $start,
+                              $dbu->countElementsInTable($this->getTable(),
+                                                         "`".$this->getTable()."`.`itilcategories_id` = '".$item->fields['id']."'"));
          echo "<table class='tab_cadre_fixehov'>";
          echo "<tr class='tab_bg_1'>";
          echo "<th width='10'>";
@@ -335,7 +341,7 @@ class PluginSeasonalityItem extends CommonDBTM {
    function getItems($id, $start=0){
       global $DB;
       
-      $output = array();
+      $output = [];
       
       $query = "SELECT `".$this->getTable()."`.*
           FROM ".$this->getTable()."
@@ -364,7 +370,7 @@ class PluginSeasonalityItem extends CommonDBTM {
    function getItemsForCategory($id, $start=0, $condition='1'){
       global $DB;
       
-      $output = array();
+      $output = [];
       
       $query = "SELECT `".$this->getTable()."`.*, 
                         `".$this->getTable()."`.id as assocID,
@@ -463,7 +469,7 @@ class PluginSeasonalityItem extends CommonDBTM {
 
                $seasonality->getFromDB($data["plugin_seasonality_seasonalities_id"]);
                if ($_SESSION['glpiactiveprofile']['interface'] == 'central' && self::canUpdate()) {
-                  $seasonalities_link = "<div id='seasonalities_link'>".$seasonality->getLink(array('linkoption' => 'target="_blank"'))."</div>";
+                  $seasonalities_link = "<div id='seasonalities_link'>".$seasonality->getLink(['linkoption' => 'target="_blank"'])."</div>";
                } else {
                   $seasonalities_link = "<div id='seasonalities_link'>".$seasonality->fields['name']."</div>";
                }
@@ -473,14 +479,14 @@ class PluginSeasonalityItem extends CommonDBTM {
          }
       }
       
-      return array('error'              => $error,
+      return ['error'              => $error,
                    'template'           => 0,
                    'seasonalities_link' => $seasonalities_link,
                    'urgency_id'         => $urgency_id,
                    'urgency_name'       => $urgency_name,
                    'default_urgency'    => $default_urgency,
                    'default_impact'     => $default_impact,
-                   'default_priority'   => $default_priority);
+                   'default_priority'   => $default_priority];
    }
    
    /**
@@ -489,7 +495,7 @@ class PluginSeasonalityItem extends CommonDBTM {
     * @param $ID        integer  ID of the item
     * @param $options   array    options used
     */
-   function showForm($ID=0, $options=array()){
+   function showForm($ID=0, $options=[]){
       $this->getFromDB($ID);
       
       $seasonality = new PluginSeasonalitySeasonality();
@@ -587,12 +593,12 @@ class PluginSeasonalityItem extends CommonDBTM {
       
       switch ($type) {
          case "ITILCategory":
-            $output = array();
+            $output = [];
             if ($this->canCreate()) {
-               $output = array (
+               $output = [
                   $prefix."add_seasonality"    => __('Add seasonality', 'seasonality'),
                   $prefix."delete_seasonality" => __('Delete seasonality', 'seasonality')
-               );
+               ];
             }
             return $output;
       }
@@ -615,14 +621,14 @@ class PluginSeasonalityItem extends CommonDBTM {
             switch ($ma->getAction()) {
                case "add_seasonality":
                   if ($seasonality->canUpdate()){
-                     Dropdown::show('PluginSeasonalitySeasonality', array('entity' => $_SESSION['glpiactiveentities']));
+                     Dropdown::show('PluginSeasonalitySeasonality', ['entity' => $_SESSION['glpiactiveentities']]);
                      echo "<br><br>";
                   }
                   break;
                   
                case "delete_seasonality":
                   if ($seasonality->canUpdate()){
-                     Dropdown::show('PluginSeasonalitySeasonality', array('entity' => $_SESSION['glpiactiveentities']));
+                     Dropdown::show('PluginSeasonalitySeasonality', ['entity' => $_SESSION['glpiactiveentities']]);
                      echo "<br><br>";
                   }
                   break;
@@ -647,15 +653,15 @@ class PluginSeasonalityItem extends CommonDBTM {
             switch ($ma->getAction()) {
                case "add_seasonality":
                   if ($key) {
-                     $result = $seasonalityItem->add(array('plugin_seasonality_seasonalities_id' => $input['plugin_seasonality_seasonalities_id'], 
-                                                           'itilcategories_id'                   => $val));
+                     $result = $seasonalityItem->add(['plugin_seasonality_seasonalities_id' => $input['plugin_seasonality_seasonalities_id'],
+                                                           'itilcategories_id'                   => $val]);
                   }
                   break;
                   
                case "delete_seasonality":
                   if ($key) {
-                     $result = $seasonalityItem->deleteByCriteria(array('plugin_seasonality_seasonalities_id' => $input['plugin_seasonality_seasonalities_id'], 
-                                                                        'itilcategories_id'                   => $val));
+                     $result = $seasonalityItem->deleteByCriteria(['plugin_seasonality_seasonalities_id' => $input['plugin_seasonality_seasonalities_id'],
+                                                                        'itilcategories_id'                   => $val]);
                   }
                   break;
 
@@ -699,11 +705,11 @@ class PluginSeasonalityItem extends CommonDBTM {
    * @return boolean
    */
    function checkMandatoryFields($input){
-      $msg     = array();
+      $msg     = [];
       $checkKo = false;
       
-      $mandatory_fields = array('itilcategories_id'                    => __('Category'), 
-                                'plugin_seasonality_seasonalities_id'  => _n('Seasonality', 'Seasonalities', 1, 'seasonality'));
+      $mandatory_fields = ['itilcategories_id'                    => __('Category'),
+                                'plugin_seasonality_seasonalities_id'  => _n('Seasonality', 'Seasonalities', 1, 'seasonality')];
 
       foreach ($input as $key => $value) {
          if (array_key_exists($key, $mandatory_fields)) {

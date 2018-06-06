@@ -46,7 +46,7 @@ class PluginSeasonalitySeasonalityInjection extends PluginSeasonalitySeasonality
    }
 
    function connectedTo() {
-      return array();
+      return [];
    }
 
    function getOptions($primary_type = '') {
@@ -55,7 +55,7 @@ class PluginSeasonalitySeasonalityInjection extends PluginSeasonalitySeasonality
 
       //$blacklist = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions();
       //Remove some options because some fields cannot be imported
-      $notimportable = array();
+      $notimportable = [];
       $options['ignore_fields'] = $notimportable;
 
       $tab = PluginDatainjectionCommonInjectionLib::addToSearchOptions($tab, $options, $this);
@@ -70,7 +70,7 @@ class PluginSeasonalitySeasonalityInjection extends PluginSeasonalitySeasonality
     * @param options options used during creation
     * @return an array of IDs of newly created objects : for example array(Computer=>1, Networkport=>10)
     */
-   function addOrUpdateObject($values=array(), $options=array()) {
+   function addOrUpdateObject($values=[], $options=[]) {
 
       $lib = new PluginDatainjectionCommonInjectionLib($this,$values,$options);
       $lib->processAddOrUpdate();

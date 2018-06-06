@@ -49,7 +49,7 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     * @param $ID        integer  ID of the item
     * @param $options   array    options used
     */
-   function showForm($ID, $options=array()) {
+   function showForm($ID, $options=[]) {
    
       $this->initForm($ID, $options);
       $this->showFormHeader($options);
@@ -57,13 +57,13 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td>".__('Name')."&nbsp;<span class='red'>*</span></td>";
       echo "<td>";
-      Html::autocompletionTextField($this, "name", array('value' => $this->fields['name']));
+      Html::autocompletionTextField($this, "name", ['value' => $this->fields['name']]);
       echo "</td>";
       echo "<td>";
       echo __('Urgency')."&nbsp;<span class='red'>*</span>";
       echo "</td>";
       echo "<td>";
-      Ticket::dropdownUrgency(array('value' => $this->fields["urgency"]));
+      Ticket::dropdownUrgency(['value' => $this->fields["urgency"]]);
       echo "</td>";
       echo "</tr>";
       
@@ -145,7 +145,7 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
          return 'NULL';
       }
       
-      $dates = array($begin_date, $end_date);
+      $dates = [$begin_date, $end_date];
       
       if ($periodicity > 0) {
          $yearDiff = date('Y', strtotime($end_date)) - date('Y', strtotime($begin_date));
@@ -285,17 +285,17 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     * @param $values            (default '')
     * @param $options   array
     * */
-   static function getSpecificValueToSelect($field, $name = '', $values = '', array $options = array()) {
+   static function getSpecificValueToSelect($field, $name = '', $values = '', array $options = []) {
 
       if (!is_array($values)) {
-         $values = array($field => $values);
+         $values = [$field => $values];
       }
       $options['display'] = false;
 
       switch ($field) {
          case 'urgency' :
             $options['value'] = $values[$field];
-            return Ticket::dropdownUrgency(array('name' => $name,'value' => $values[$field], 'display' => false));
+            return Ticket::dropdownUrgency(['name' => $name,'value' => $values[$field], 'display' => false]);
       }
       return parent::getSpecificValueToSelect($field, $name, $values, $options);
    }
@@ -305,9 +305,9 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     * @param $values
     * @param $options   array
     * */
-   static function getSpecificValueToDisplay($field, $values, array $options = array()) {
+   static function getSpecificValueToDisplay($field, $values, array $options = []) {
       if (!is_array($values)) {
-         $values = array($field => $values);
+         $values = [$field => $values];
       }
       switch ($field) {
          case 'urgency':
@@ -323,13 +323,13 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
    * @return boolean
    */
    function checkMandatoryFields($input){
-      $msg     = array();
+      $msg     = [];
       $checkKo = false;
       
-      $mandatory_fields = array('end_date'          => __('End date'),
+      $mandatory_fields = ['end_date'          => __('End date'),
                                 'begin_date'        => __('Begin date'),
                                 'name'              => __('Name'),
-                                'urgency'           => __('Urgency'));
+                                'urgency'           => __('Urgency')];
 
       foreach ($input as $key => $value) {
          if (array_key_exists($key, $mandatory_fields)) {
@@ -352,7 +352,7 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
     */
    static function getMenuContent() {
       $plugin_page =  PluginSeasonalitySeasonality::getSearchURL(false);
-      $menu = array();
+      $menu = [];
       //Menu entry in helpdesk
       $menu['title']                          = PluginSeasonalitySeasonality::getTypeName(2);
       $menu['page']                           = $plugin_page;
