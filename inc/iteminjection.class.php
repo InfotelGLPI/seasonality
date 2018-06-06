@@ -94,5 +94,3 @@ class PluginSeasonalityItemInjection extends PluginSeasonalityItem
                               'plugin_seasonality_seasonalities_id' => $toinject['plugin_seasonality_seasonalities_id']]);
    }
 }
-
-?>

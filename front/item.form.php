@@ -63,5 +63,3 @@ if (isset($_POST["add"])) {
    $seasonality->display($_GET);
    Html::footer();
 }
-
-?>
