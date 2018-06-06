@@ -107,6 +107,7 @@
             var urgence_block       = $("select[name='urgency'], input[name='urgency']");
             var type                = $("select[name='type'], input[name='type']");
             var entities_id         = $("input[name='entities_id']");
+
             if (urgence_block.length != 0) {
                 $.ajax({
                     url: root_doc + '/plugins/seasonality/ajax/ticket.php',

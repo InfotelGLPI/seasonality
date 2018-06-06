@@ -86,5 +86,3 @@ function plugin_datainjection_populate_seasonality() {
    $INJECTABLE_TYPES['PluginSeasonalityItemInjection'] = 'seasonality';
    $INJECTABLE_TYPES['PluginSeasonalitySeasonalityInjection'] = 'seasonality';
 }
-
-?>

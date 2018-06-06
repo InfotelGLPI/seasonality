@@ -266,5 +266,3 @@ class PluginSeasonalityProfile extends Profile {
    }
    
 }
-
-?>
