@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-29 10:00+0200\n"
+"PO-Revision-Date: 2018-06-06 14:02+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: setup.php:80 inc/item.class.php:720 inc/profile.class.php:44
+#: inc/profile.class.php:133 inc/seasonality.class.php:43
+msgid "Seasonality"
+msgid_plural "Seasonalities"
+msgstr[0] "Sezonnost"
+msgstr[1] "Sezonnosti"
+msgstr[2] "Sezonností"
+
+#: inc/item.class.php:43
+msgid "Seasonality item"
+msgid_plural "Seasonality items"
+msgstr[0] "Položka sezonnosti"
+msgstr[1] "Položky sezonnosti"
+msgstr[2] "Položek sezonnosti"
+
+#: inc/item.class.php:171
+msgid "Add a category"
+msgstr "Přidat kategorii"
+
+#: inc/item.class.php:607
+msgid "Add seasonality"
+msgstr "Přidat sezonnost"
+
+#: inc/item.class.php:608
+msgid "Delete seasonality"
+msgstr "Smazat sezonnost"
+
+#: inc/item.class.php:753
+msgid "Cannot add two seasonalities with same date interval"
+msgstr "Není možné přidat dvě sezonnosti pro stejné období"
+
+#: inc/seasonality.class.php:72
+msgid "Date range"
+msgstr "Období"
+
+#: inc/seasonality.class.php:81
+msgid "Clear"
+msgstr "Vyčistit"
+
+#: inc/seasonality.class.php:83
+msgid "Select date range..."
+msgstr "Vybrat období…"
+
+#: inc/seasonality.class.php:89
+msgid "Today"
+msgstr "Dnes"
+
+#: inc/seasonality.class.php:93
+msgid "Tomorrow"
+msgstr "Zítra"
+
+#: inc/seasonality.class.php:97
+msgid "Next 7 Days"
+msgstr "Následujících 7 dní"
+
+#: inc/seasonality.class.php:101
+msgid "Next Week"
+msgstr "Příští týden"
+
+#~ msgid "This plugin requires GLPI >= 0.85"
+#~ msgstr "This plugin requires GLPI >= 0.85"
