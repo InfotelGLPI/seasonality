@@ -43,9 +43,9 @@ class PluginSeasonalityItem extends CommonDBTM {
       return _n('Seasonality item', 'Seasonality items', $nb, 'seasonality');
    }
 
-  /** 
+  /**
    * Purge item
-   * 
+   *
    * @param type $item
    */
    static function purgeItem($item) {
@@ -57,7 +57,7 @@ class PluginSeasonalityItem extends CommonDBTM {
             ], 1);
       }
    }
-   
+
    /**
     * Display tab for each tickets
     *
@@ -110,11 +110,11 @@ class PluginSeasonalityItem extends CommonDBTM {
     * @param $options   array    options used
     */
    function showForItem(ITILCategory $item) {
-      
+
       $canedit = $item->can($item->fields['id'], UPDATE) && $this->canCreate();
-      
+
       $plugin_seasonality_seasonalities_id = 0;
-      
+
       $data = $this->getItemsForCategory($item->fields['id']);
       $used = [];
       foreach ($data as $val) {
@@ -130,7 +130,7 @@ class PluginSeasonalityItem extends CommonDBTM {
       Dropdown::show('PluginSeasonalitySeasonality', ['used' => $used, 'entity' => $item->getField('entities_id'), 'entity_sons' => $item->getField('is_recursive')]);
       echo "</td>";
       echo "</tr>";
-      
+
       if ($canedit) {
          echo "<tr>";
          echo "<td class='tab_bg_2 center' colspan='2'>";
@@ -139,17 +139,17 @@ class PluginSeasonalityItem extends CommonDBTM {
          echo "</tr>";
       }
       echo "</table></div>";
-      
+
       echo "<input type='hidden' name='itilcategories_id' class='submit' value='".$item->fields['id']."' >";
-      
+
       Html::closeForm();
-      
+
       // Show seasonality list
       $this->showSeasonalityList($item);
 
       return true;
    }
-   
+
    /**
     * Show for category add for seasonaltity
     *
@@ -157,9 +157,9 @@ class PluginSeasonalityItem extends CommonDBTM {
     * @param $options   array    options used
     */
    function showForSeasonality(PluginSeasonalitySeasonality $seasonality) {
-      
+
       $canedit = $seasonality->can($seasonality->fields['id'], UPDATE) && $this->canCreate();
-      
+
       $data = $this->getItems($seasonality->fields['id']);
       $used = [];
       foreach ($data as $val) {
@@ -175,7 +175,7 @@ class PluginSeasonalityItem extends CommonDBTM {
       Dropdown::show('ITILCategory', ['entity' => $seasonality->getField('entities_id'), 'entity_sons' => $seasonality->getField('is_recursive'), 'used' => $used]);
       echo "</td>";
       echo "</tr>";
-      
+
       if ($canedit) {
          echo "<tr>";
          echo "<td class='tab_bg_2 center' colspan='2'>";
@@ -185,9 +185,9 @@ class PluginSeasonalityItem extends CommonDBTM {
          echo "</tr>";
       }
       echo "</table></div>";
-      
+
       Html::closeForm();
-      
+
        // Show category list
       $this->showCategoryList($seasonality);
 
@@ -196,23 +196,23 @@ class PluginSeasonalityItem extends CommonDBTM {
 
    /**
     * Function show categories for item
-    * 
+    *
     * @param type $item
     * @return boolean
     */
    function showCategoryList(PluginSeasonalitySeasonality $item) {
-      
+
       $canedit = ($item->can($item->fields['id'], UPDATE) && $this->canCreate());
-      
+
       $rand = mt_rand();
-      
+
       if (isset($_GET["start"])) {
          $start = $_GET["start"];
       } else {
          $start = 0;
       }
       $data = $this->getItems($item->fields['id'], $start);
-      
+
       if (!empty($data)) {
          echo "<div class='center'>";
          if ($canedit) {
@@ -251,31 +251,31 @@ class PluginSeasonalityItem extends CommonDBTM {
          if ($canedit) {
             $massiveactionparams['ontop'] = false;
             Html::showMassiveActions($massiveactionparams);
-            Html::closeForm(); 
+            Html::closeForm();
          }
          echo "</div>";
       }
    }
-   
+
    /**
     * Function show seasonality for item
-    * 
+    *
     * @param type $item
     * @return boolean
     */
    function showSeasonalityList(ITILCategory $item) {
-      
+
       $canedit = ($item->can($item->fields['id'], UPDATE) && $this->canCreate());
-      
+
       $rand = mt_rand();
-      
+
       if (isset($_GET["start"])) {
          $start = $_GET["start"];
       } else {
          $start = 0;
       }
       $data = $this->getItemsForCategory($item->fields['id'], $start);
-      
+
       if (!empty($data)) {
          echo "<div class='center'>";
          if ($canedit) {
@@ -324,15 +324,15 @@ class PluginSeasonalityItem extends CommonDBTM {
          if ($canedit) {
             $massiveactionparams['ontop'] = false;
             Html::showMassiveActions($massiveactionparams);
-            Html::closeForm(); 
+            Html::closeForm();
          }
          echo "</div>";
       }
    }
-   
+
    /**
     * Function get items
-    * 
+    *
     * @global type $DB
     * @param type $id
     * @param type $start
@@ -340,9 +340,9 @@ class PluginSeasonalityItem extends CommonDBTM {
     */
    function getItems($id, $start=0){
       global $DB;
-      
+
       $output = [];
-      
+
       $query = "SELECT `".$this->getTable()."`.*
           FROM ".$this->getTable()."
           WHERE `".$this->getTable()."`.`plugin_seasonality_seasonalities_id` = '".Toolbox::cleanInteger($id)."'
@@ -354,13 +354,13 @@ class PluginSeasonalityItem extends CommonDBTM {
             $output[$data['id']] = $data;
          }
       }
-      
+
       return $output;
    }
-   
+
    /**
     * Function get items
-    * 
+    *
     * @global type $DB
     * @param type $id
     * @param type $start
@@ -369,9 +369,9 @@ class PluginSeasonalityItem extends CommonDBTM {
     */
    function getItemsForCategory($id, $start=0, $condition='1'){
       global $DB;
-      
+
       $output = [];
-      
+
       $query = "SELECT `".$this->getTable()."`.*, 
                         `".$this->getTable()."`.id as assocID,
                        `glpi_plugin_seasonality_seasonalities`.*
@@ -388,14 +388,14 @@ class PluginSeasonalityItem extends CommonDBTM {
             $output[$data['id']] = $data;
          }
       }
-      
+
       return $output;
    }
-   
-      
+
+
    /**
     * Get urgency from ticket category
-    * 
+    *
     * @param type $itilcategories_id
     * @param type $tickets_id
     * @param type $date
@@ -404,7 +404,7 @@ class PluginSeasonalityItem extends CommonDBTM {
     * @return type
     */
    function getUrgencyFromCategory($itilcategories_id, $tickets_id, $date, $type, $entities_id) {
-      
+
       // Default values
       $error              = 1;
       $urgency_name       = null;
@@ -468,17 +468,17 @@ class PluginSeasonalityItem extends CommonDBTM {
                $urgency_id         = $data["urgency"];
 
                $seasonality->getFromDB($data["plugin_seasonality_seasonalities_id"]);
-               if ($_SESSION['glpiactiveprofile']['interface'] == 'central' && self::canUpdate()) {
+                if ($_SESSION['glpiactiveprofile']['interface'] == 'central' && self::canUpdate()) {
                   $seasonalities_link = "<div id='seasonalities_link'>".$seasonality->getLink(['linkoption' => 'target="_blank"'])."</div>";
                } else {
                   $seasonalities_link = "<div id='seasonalities_link'>".$seasonality->fields['name']."</div>";
                }
-               $error = 0; 
+               $error = 0;
                break;
             }
          }
       }
-      
+
       return ['error'              => $error,
                    'template'           => 0,
                    'seasonalities_link' => $seasonalities_link,
@@ -488,7 +488,7 @@ class PluginSeasonalityItem extends CommonDBTM {
                    'default_impact'     => $default_impact,
                    'default_priority'   => $default_priority];
    }
-   
+
    /**
     * Show form
     *
@@ -497,14 +497,14 @@ class PluginSeasonalityItem extends CommonDBTM {
     */
    function showForm($ID=0, $options=[]){
       $this->getFromDB($ID);
-      
+
       $seasonality = new PluginSeasonalitySeasonality();
       $seasonality->showForm($this->getID(), $options);
    }
 
-   /** 
+   /**
    * Actions done before add
-   * 
+   *
    * @param type $input
    * @return type
    */
@@ -512,15 +512,15 @@ class PluginSeasonalityItem extends CommonDBTM {
       if (!$this->checkMandatoryFields($input) || !$this->checkItemDate($input)) {
          return false;
       }
-      
+
       return $input;
    }
-   
-   
-   
-  /** 
+
+
+
+  /**
    * Actions done before update
-   * 
+   *
    * @param type $input
    * @return type
    */
@@ -531,10 +531,10 @@ class PluginSeasonalityItem extends CommonDBTM {
 
       return $input;
    }
-   
-  /** 
+
+  /**
    * Add search options for an item
-   * 
+   *
    * @return array
    */
    function getAddSearchOptions(){
@@ -554,13 +554,13 @@ class PluginSeasonalityItem extends CommonDBTM {
                                    => ['table'      => 'glpi_plugin_seasonality_items',
                                             'joinparams' => ['jointype'   => 'child']]]
       ];
-            
+
       return $tab;
    }
-   
-  /** 
+
+  /**
    * Add search options for an item
-   * 
+   *
    * @return array
    */
    function rawSearchOptions(){
@@ -584,21 +584,21 @@ class PluginSeasonalityItem extends CommonDBTM {
          'massiveaction'  => false,
          'search'         => false
       ];
-      
+
       return $tab;
    }
-   
+
     /**
     * Massive actions to be added
-    * 
+    *
     * @param $input array of input datas
     *
     * @return array of results (nbok, nbko, nbnoright counts)
     **/
    function massiveActions($type){
-      
+
       $prefix = $this->getType().MassiveAction::CLASS_ACTION_SEPARATOR;
-      
+
       switch ($type) {
          case "ITILCategory":
             $output = [];
@@ -611,16 +611,16 @@ class PluginSeasonalityItem extends CommonDBTM {
             return $output;
       }
    }
-   
+
    /**
     * Massive actions display
-    * 
+    *
     * @param $input array of input datas
     *
     * @return array of results (nbok, nbko, nbnoright counts)
     * */
    static function showMassiveActionsSubForm(MassiveAction $ma) {
-      
+
       $itemtype = $ma->getItemtype(false);
       $seasonality = new PluginSeasonalitySeasonality();
 
@@ -633,7 +633,7 @@ class PluginSeasonalityItem extends CommonDBTM {
                      echo "<br><br>";
                   }
                   break;
-                  
+
                case "delete_seasonality":
                   if ($seasonality->canUpdate()){
                      Dropdown::show('PluginSeasonalitySeasonality', ['entity' => $_SESSION['glpiactiveentities']]);
@@ -644,7 +644,7 @@ class PluginSeasonalityItem extends CommonDBTM {
             return parent::showMassiveActionsSubForm($ma);
       }
    }
-   
+
    /**
     * @since version 0.85
     *
@@ -654,7 +654,7 @@ class PluginSeasonalityItem extends CommonDBTM {
                                                        array $ids) {
       $input = $ma->getInput();
       $seasonalityItem = new self();
-      
+
       foreach ($ids as $key => $val) {
          if ($item->can($key, UPDATE) && $seasonalityItem->canUpdate()) {
             $result = false;
@@ -665,7 +665,7 @@ class PluginSeasonalityItem extends CommonDBTM {
                                                            'itilcategories_id'                   => $val]);
                   }
                   break;
-                  
+
                case "delete_seasonality":
                   if ($key) {
                      $result = $seasonalityItem->deleteByCriteria(['plugin_seasonality_seasonalities_id' => $input['plugin_seasonality_seasonalities_id'],
@@ -691,31 +691,31 @@ class PluginSeasonalityItem extends CommonDBTM {
       }
    }
 
-      
-  /** 
+
+  /**
    * Forbidden massive actions
-   * 
+   *
    * @return array
    */
    function getForbiddenStandardMassiveAction() {
 
       $forbidden = parent::getForbiddenStandardMassiveAction();
       $forbidden[] = 'update';
-      
+
       return $forbidden;
    }
-   
-   
-  /** 
-   * checkMandatoryFields 
-   * 
+
+
+  /**
+   * checkMandatoryFields
+   *
    * @param type $input
    * @return boolean
    */
    function checkMandatoryFields($input){
       $msg     = [];
       $checkKo = false;
-      
+
       $mandatory_fields = ['itilcategories_id'                    => __('Category'),
                                 'plugin_seasonality_seasonalities_id'  => _n('Seasonality', 'Seasonalities', 1, 'seasonality')];
 
@@ -727,18 +727,18 @@ class PluginSeasonalityItem extends CommonDBTM {
             }
          }
       }
-      
+
       if ($checkKo) {
          Session::addMessageAfterRedirect(sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg)), true, ERROR);
          return false;
       }
       return true;
    }
-   
-      
-  /** 
+
+
+  /**
    * Check if items have not same dates
-   * 
+   *
    * @param type $input
    * @return type
    */
@@ -747,15 +747,15 @@ class PluginSeasonalityItem extends CommonDBTM {
 
       $seasonality = new PluginSeasonalitySeasonality();
       $seasonality->getFromDB($input['plugin_seasonality_seasonalities_id']);
-      
+
       foreach ($datas as $data) {
          if($seasonality->fields['begin_date'] >= $data['begin_date'] && $seasonality->fields['end_date'] <= $data['end_date']){
             Session::addMessageAfterRedirect(__("Cannot add two seasonalities with same date interval", "seasonality"), true, ERROR);
             return false;
          }
       }
-      
+
       return true;
    }
-   
+
 }

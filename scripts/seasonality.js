@@ -29,7 +29,6 @@
                 var tickets_id = object.urlParam(window.location.href, 'id');
                 // CENTRAL
                 if (location.pathname.indexOf('ticket.form.php') > 0 && !object.isIE()) {
-
                     // Launched on each complete Ajax load
                     $(document).ajaxComplete(function (event, xhr, option) {
                         // We execute the code only if the central form display request is done

@@ -44,6 +44,3 @@ switch($_POST['action']){
       echo json_encode($item->getUrgencyFromCategory($_POST['itilcategories_id'], $_POST['tickets_id'], $_POST['date'], $_POST['type'], $_POST['entities_id']));
       break;
 }
-
-
-?>

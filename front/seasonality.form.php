@@ -64,4 +64,3 @@ if (isset($_POST["add"])) {
    $item->display($_GET);
    Html::footer();
 }
-?>

@@ -44,7 +44,7 @@ function plugin_init_seasonality() {
          Plugin::registerClass('PluginSeasonalityItem', ['addtabon' => 'ITILCategory']);
          Plugin::registerClass('PluginSeasonalityItem', ['addtabon' => 'PluginSeasonalitySeasonality']);
       }
-      
+
       // Add specific files to add to the header : javascript or css
       $PLUGIN_HOOKS['add_javascript']['seasonality'] = ["lib/daterangepicker/jquery.comiseo.daterangepicker.min.js",
                                                              "lib/daterangepicker/moment.min.js"];
@@ -66,7 +66,7 @@ function plugin_init_seasonality() {
          'PluginSeasonalitySeasonality' => ['PluginSeasonalityItem', 'purgeItem'],
          'Profile'                      => ['PluginSeasonalityProfile', 'purgeProfiles']
       ];
-      
+
       $PLUGIN_HOOKS['plugin_datainjection_populate']['seasonality'] = 'plugin_datainjection_populate_seasonality';
    }
    // End init, when all types are registered
@@ -99,5 +99,3 @@ function plugin_seasonality_check_prerequisites() {
 function plugin_seasonality_check_config() {
    return true;
 }
-
-?>
