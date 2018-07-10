@@ -34,7 +34,7 @@ function plugin_seasonality_install() {
 
    // Table sql creation
    if (!$DB->tableExists("glpi_plugin_seasonality_seasonalities")) {
-      $DB->runFile(GLPI_ROOT . "/plugins/seasonality/install/sql/empty.sql");
+      $DB->runFile(GLPI_ROOT . "/plugins/seasonality/install/sql/empty-1.4.0.sql");
    }
 
    PluginSeasonalityProfile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
@@ -56,7 +56,6 @@ function plugin_seasonality_uninstall() {
 }
 
 function plugin_seasonality_postinit() {
-   global $PLUGIN_HOOKS;
 }
 
 function plugin_seasonality_getAddSearchOptions($itemtype) {

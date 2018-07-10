@@ -1,6 +1,12 @@
 # seasonality
 Plugin seasonality for GLPI
 
+Ce plugin est sur Transifex - Aidez-nous à le traduire :
+https://www.transifex.com/tsmr/GLPI_seasonality/
+
+This plugin is on Transifex - Help us to translate :
+https://www.transifex.com/tsmr/GLPI_seasonality/
+
 Ce plugin permet de créer des saisonnalités pour des catégories spécifiques et ainsi augmenter l'urgence et donc la priorité du ticket :
 
 Cas concret :

@@ -1,17 +1,21 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Seasonality Development Team
+# This file is distributed under the same license as the GLPI - Seasonality plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: GLPI - Seasonality plugin 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-29 10:00+0200\n"
-"PO-Revision-Date: 2018-05-29 10:21+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: en_GB\n"
+"POT-Creation-Date: 2018-07-10 09:03+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
-"X-Poedit-Basepath: .\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: setup.php:80 inc/item.class.php:720 inc/profile.class.php:44
@@ -70,6 +74,3 @@ msgstr "Next 7 Days"
 #: inc/seasonality.class.php:101
 msgid "Next Week"
 msgstr "Next Week"
-
-#~ msgid "This plugin requires GLPI >= 0.85"
-#~ msgstr "This plugin requires GLPI >= 0.85"
