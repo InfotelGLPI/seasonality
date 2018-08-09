@@ -223,7 +223,7 @@ class PluginSeasonalityItem extends CommonDBTM {
          $dbu = new DbUtils();
          Html::printAjaxPager(__('Category'), $start,
                               $dbu->countElementsInTable($this->getTable(),
-                                                         "`".$this->getTable()."`.`plugin_seasonality_seasonalities_id` = '".$item->fields['id']."'"));
+                                                         ["plugin_seasonality_seasonalities_id" => $item->fields['id']]));
          echo "<table class='tab_cadre_fixehov'>";
          echo "<tr class='tab_bg_1'>";
          echo "<th width='10'>";
