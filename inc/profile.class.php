@@ -199,7 +199,7 @@ class PluginSeasonalityProfile extends Profile {
       //Add new rights in glpi_profilerights table
       foreach ($profile->getAllRights(true) as $data) {
          if ($dbu->countElementsInTable("glpi_profilerights",
-                                       "`name` = '".$data['field']."'") == 0) {
+                                       ["name" => $data['field']]) == 0) {
             ProfileRight::addProfileRights([$data['field']]);
          }
       }
