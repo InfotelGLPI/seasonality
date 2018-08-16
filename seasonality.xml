@@ -8,10 +8,12 @@
       <short>
          <fr><![CDATA[Ce plugin permet de créer des saisonnalités pour des catégories spécifiques et ainsi augmenter l'urgence et donc la priorité du ticket.]]></fr>
          <en><![CDATA[This plugin allows you to create seasonality for specific categories and thus increase the urgency and therefore the priority of the ticket.]]></en>
+         <cs><![CDATA[Tento zásuvný modul umožňuje vytvářet sezonnost pro konkrétní kategorie a tím zvyšovat naléhavost a ve výsledku prioritu požadavku.]]></cs>
       </short>
       <long>
          <fr><![CDATA[Ce plugin permet de créer des saisonnalités pour des catégories spécifiques et ainsi augmenter l'urgence et donc la priorité du ticket.]]></fr>
          <en><![CDATA[This plugin allows you to create seasonality for specific categories and thus increase the urgency and therefore the priority of the ticket.]]></en>
+         <cs><![CDATA[Tento zásuvný modul umožňuje vytvářet sezonnost pro konkrétní kategorie a tím zvyšovat naléhavost a ve výsledku prioritu požadavku.]]></cs>
       </long>
    </description>
    <homepage>https://github.com/InfotelGLPI/seasonality</homepage>
@@ -55,6 +57,10 @@
             <tag>ticket</tag>
             <tag>category</tag>
          </en>
+         <cs>
+            <tag>požadavek</tag>
+            <tag>kategorie</tag>
+         </cs>
    </tags>
     <screenshots>
       <screenshot>https://raw.githubusercontent.com/InfotelGLPI/seasonality/master/screenshots/seasonality.png</screenshot>
