@@ -78,7 +78,7 @@ function plugin_version_seasonality() {
 
    return [
       'name'           => _n('Seasonality', 'Seasonalities', 2, 'seasonality'),
-      'version'        => '1.4.0',
+      'version'        => '1.4.1',
       'license'        => 'GPLv2+',
       'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a> & Ludovic Dupont",
       'homepage'       => 'https://github.com/InfotelGLPI/seasonality',
