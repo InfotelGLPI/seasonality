@@ -127,7 +127,9 @@ class PluginSeasonalityItem extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td class='center'>".PluginSeasonalitySeasonality::getTypeName(1)." <span class='red'>*</span></td>";
       echo "<td class='center'>";
-      Dropdown::show('PluginSeasonalitySeasonality', ['used' => $used, 'entity' => $item->getField('entities_id'), 'entity_sons' => $item->getField('is_recursive')]);
+      Dropdown::show('PluginSeasonalitySeasonality', ['used' => $used,
+                                                      'entity' => $item->getField('entities_id'),
+                                                      'entity_sons' => $item->getField('is_recursive')]);
       echo "</td>";
       echo "</tr>";
 
@@ -172,7 +174,9 @@ class PluginSeasonalityItem extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td class='center'>".__('Category')." <span class='red'>*</span></td>";
       echo "<td class='center'>";
-      Dropdown::show('ITILCategory', ['entity' => $seasonality->getField('entities_id'), 'entity_sons' => $seasonality->getField('is_recursive'), 'used' => $used]);
+      Dropdown::show('ITILCategory', ['entity' => $seasonality->getField('entities_id'),
+                                      'entity_sons' => $seasonality->getField('is_recursive'),
+                                      'used' => $used]);
       echo "</td>";
       echo "</tr>";
 
