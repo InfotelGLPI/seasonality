@@ -49,7 +49,7 @@
                                 itilcategoriesIdElm.on('change', function () {
                                     object.loadUrgency(tickets_id, true);
                                 });
-                            }, 100);
+                            }, 1860);
                         }
                     }, this);
 
