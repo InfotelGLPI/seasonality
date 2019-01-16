@@ -27,6 +27,8 @@
  --------------------------------------------------------------------------
  */
 
+define('PLUGIN_SEASONALITY_VERSION', '1.5.0');
+
 // Init the hooks of the plugins -Needed
 function plugin_init_seasonality() {
    global $PLUGIN_HOOKS, $CFG_GLPI;
@@ -78,7 +80,7 @@ function plugin_version_seasonality() {
 
    return [
       'name'           => _n('Seasonality', 'Seasonalities', 2, 'seasonality'),
-      'version'        => '1.4.1',
+      'version'        => PLUGIN_SEASONALITY_VERSION,
       'license'        => 'GPLv2+',
       'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a> & Ludovic Dupont",
       'homepage'       => 'https://github.com/InfotelGLPI/seasonality',
