@@ -2,14 +2,16 @@
 # Copyright (C) YEAR Seasonality Development Team
 # This file is distributed under the same license as the GLPI - Seasonality plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-#, fuzzy
+#
+# Translators:
+# Amandine Manceau, 2018
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Seasonality plugin 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-10 09:03+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-02-25 10:35+0100\n"
 "Last-Translator: Amandine Manceau, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/tsmr/teams/88214/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"X-Generator: Poedit 2.0.9\n"
 
 #: setup.php:80 inc/item.class.php:720 inc/profile.class.php:44
 #: inc/profile.class.php:133 inc/seasonality.class.php:43

@@ -3,13 +3,16 @@
 # This file is distributed under the same license as the GLPI - Seasonality plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Amandine Manceau, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Seasonality plugin 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-10 09:03+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-07-10 07:04+0000\n"
 "Last-Translator: Amandine Manceau, 2018\n"
 "Language-Team: French (France) (https://www.transifex.com/tsmr/teams/88214/fr_FR/)\n"
 "MIME-Version: 1.0\n"

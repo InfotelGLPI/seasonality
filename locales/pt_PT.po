@@ -3,22 +3,25 @@
 # This file is distributed under the same license as the GLPI - Seasonality plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
+# Emperium EmperiuM <real.emperium@gmail.com>, 2018
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Seasonality plugin 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-25 10:33+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2018-07-10 09:03+0200\n"
+"PO-Revision-Date: 2019-02-25 10:36+0100\n"
+"Last-Translator: Emperium EmperiuM <real.emperium@gmail.com>, 2018\n"
+"Language-Team: Portuguese (Portugal) (https://www.transifex.com/tsmr/teams/88214/pt_PT/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Language: pt_PT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.9\n"
 
-#: setup.php:82 inc/item.class.php:724 inc/profile.class.php:44
+#: setup.php:80 inc/item.class.php:720 inc/profile.class.php:44
 #: inc/profile.class.php:133 inc/seasonality.class.php:43
 msgid "Seasonality"
 msgid_plural "Seasonalities"
@@ -31,19 +34,19 @@ msgid_plural "Seasonality items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/item.class.php:173
+#: inc/item.class.php:171
 msgid "Add a category"
-msgstr ""
+msgstr "Adicionar uma categoria "
 
-#: inc/item.class.php:611
+#: inc/item.class.php:607
 msgid "Add seasonality"
 msgstr ""
 
-#: inc/item.class.php:612
+#: inc/item.class.php:608
 msgid "Delete seasonality"
 msgstr ""
 
-#: inc/item.class.php:757
+#: inc/item.class.php:753
 msgid "Cannot add two seasonalities with same date interval"
 msgstr ""
 
