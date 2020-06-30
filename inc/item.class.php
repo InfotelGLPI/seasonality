@@ -354,7 +354,7 @@ class PluginSeasonalityItem extends CommonDBTM {
 
       $result = $DB->query($query);
       if ($DB->numrows($result)) {
-         while ($data = $DB->fetch_assoc($result)) {
+         while ($data = $DB->fetchAssoc($result)) {
             $output[$data['id']] = $data;
          }
       }
@@ -388,7 +388,7 @@ class PluginSeasonalityItem extends CommonDBTM {
 
       $result = $DB->query($query);
       if ($DB->numrows($result)) {
-         while ($data = $DB->fetch_assoc($result)) {
+         while ($data = $DB->fetchAssoc($result)) {
             $output[$data['id']] = $data;
          }
       }
@@ -424,9 +424,9 @@ class PluginSeasonalityItem extends CommonDBTM {
       // If template load urgency, DO NOT load seasonality
       if ($tickets_id > 0) {
          $ticket->getFromDB($tickets_id);
-         $tt = $ticket->getTicketTemplateToUse(0, $ticket->fields['type'], $ticket->fields['itilcategories_id'], $ticket->fields['entities_id']);
+         $tt = $ticket->getITILTemplateToUse(0, $ticket->fields['type'], $ticket->fields['itilcategories_id'], $ticket->fields['entities_id']);
       } else {
-         $tt = $ticket->getTicketTemplateToUse(0, $type, $itilcategories_id, $entities_id);
+         $tt = $ticket->getITILTemplateToUse(0, $type, $itilcategories_id, $entities_id);
       }
       if (isset($tt->predefined) && count($tt->predefined)) {
          if (isset($tt->predefined['impact'])) {

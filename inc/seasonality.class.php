@@ -384,6 +384,7 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
       $menu['title']                          = PluginSeasonalitySeasonality::getTypeName(2);
       $menu['page']                           = $plugin_page;
       $menu['links']['search']                = $plugin_page;
+      $menu['icon']                           = self::getIcon();
       
       // Main
       $menu['options']['seasonality']['title']            = PluginSeasonalitySeasonality::getTypeName(1);
@@ -392,6 +393,10 @@ class PluginSeasonalitySeasonality extends CommonDBTM {
       $menu['options']['seasonality']['links']['search']  = PluginSeasonalitySeasonality::getSearchURL(false);
 
       return $menu;
+   }
+
+   static function getIcon() {
+      return "fas fa-cloud-meatball";
    }
    
    

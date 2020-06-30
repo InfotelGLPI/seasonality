@@ -32,10 +32,18 @@ function plugin_seasonality_install() {
 
    include_once (GLPI_ROOT . "/plugins/seasonality/inc/profile.class.php");
 
+   $update = true;
    // Table sql creation
    if (!$DB->tableExists("glpi_plugin_seasonality_seasonalities")) {
-      $DB->runFile(GLPI_ROOT . "/plugins/seasonality/install/sql/empty-1.4.0.sql");
+      $DB->runFile(GLPI_ROOT . "/plugins/seasonality/install/sql/empty-1.6.0.sql");
+      $update = false;
    }
+
+   // Update timestamp for 9.5 (v1.6.0)
+   if ($update) {
+      $DB->runFile(GLPI_ROOT . "/plugins/seasonality/install/sql/update-1.6.0.sql");
+   }
+
 
    PluginSeasonalityProfile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
    return true;
