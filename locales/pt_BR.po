@@ -2,75 +2,79 @@
 # Copyright (C) YEAR Seasonality Development Team
 # This file is distributed under the same license as the GLPI - Seasonality plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Seasonality plugin 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-10 09:03+0200\n"
-"PO-Revision-Date: 2019-02-25 10:36+0100\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/tsmr/teams/88214/pt_BR/)\n"
+"POT-Creation-Date: 2019-02-25 10:33+0100\n"
+"PO-Revision-Date: 2020-11-02 16:18+0000\n"
+"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2020\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/infotelGLPI/teams/88214/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
-"X-Generator: Poedit 2.0.9\n"
 
-#: setup.php:80 inc/item.class.php:720 inc/profile.class.php:44
+#: setup.php:82 inc/item.class.php:724 inc/profile.class.php:44
 #: inc/profile.class.php:133 inc/seasonality.class.php:43
 msgid "Seasonality"
 msgid_plural "Seasonalities"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Sazonalidade"
+msgstr[1] "Sazonalidades"
 
 #: inc/item.class.php:43
 msgid "Seasonality item"
 msgid_plural "Seasonality items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Item de Sazonalidade"
+msgstr[1] "Itens de Sazonalidades"
 
-#: inc/item.class.php:171
+#: inc/item.class.php:173
 msgid "Add a category"
-msgstr ""
+msgstr "Adicionar uma categoria"
 
-#: inc/item.class.php:607
+#: inc/item.class.php:611
 msgid "Add seasonality"
-msgstr ""
+msgstr "Adicionar sazonalidade"
 
-#: inc/item.class.php:608
+#: inc/item.class.php:612
 msgid "Delete seasonality"
-msgstr ""
+msgstr "Apagar Sazonalidade"
 
-#: inc/item.class.php:753
+#: inc/item.class.php:757
 msgid "Cannot add two seasonalities with same date interval"
 msgstr ""
+"Não é possível adicionar duas sazonalidades com o mesmo intervalo de datas"
 
 #: inc/seasonality.class.php:72
 msgid "Date range"
-msgstr ""
+msgstr "Período"
 
 #: inc/seasonality.class.php:81
 msgid "Clear"
-msgstr ""
+msgstr "Limpar"
 
 #: inc/seasonality.class.php:83
 msgid "Select date range..."
-msgstr ""
+msgstr "Selecionar período..."
 
 #: inc/seasonality.class.php:89
 msgid "Today"
-msgstr ""
+msgstr "Hoje"
 
 #: inc/seasonality.class.php:93
 msgid "Tomorrow"
-msgstr ""
+msgstr "Amanhã"
 
 #: inc/seasonality.class.php:97
 msgid "Next 7 Days"
-msgstr ""
+msgstr "Próximos 7 dias"
 
 #: inc/seasonality.class.php:101
 msgid "Next Week"
-msgstr ""
+msgstr "Próxima Semana"
